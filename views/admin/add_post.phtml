@@ -1,0 +1,31 @@
+<header>
+    <h2>Rédiger un nouvel article</h2>
+</header>
+<section>
+    <form action="<?=buildUrl('/admin/post/new');?>" method="post">
+        <fieldset>
+            <div>
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title">
+            </div>
+            <div>
+                <label for="category">Catégorie</label>
+                <select name="category">
+                    <?php foreach($categories as $category): ?>
+                        <option value="<?=$category['id'];?>"><?=$category['name'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image">
+            </div>
+            <div>
+                <label for="content">Contenu</label>
+                <textarea id="content" name="content"></textarea>
+            </div>
+        </fieldset>
+        <input type="submit" value="Enregistrer">
+    </form>
+
+</section>

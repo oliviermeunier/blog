@@ -1,0 +1,20 @@
+<form action="<?=buildUrl('/contact');?>" method="post">
+    <fieldset>
+        <legend>Contactez-nous</legend>
+        <ul>
+            <li>
+                <label for="name">Votre nom</label>
+                <input type="text" id="name" name="name">
+            </li>
+            <li>
+                <label for="email">Votre email</label>
+                <input type="email" id="email" name="email">
+            </li>
+            <li>
+                <label for="message">Votre message</label>
+                <textarea name="message"></textarea>
+            </li>
+        </ul>
+    </fieldset>
+    <input type="submit" value="Envoyer">
+</form>

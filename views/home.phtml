@@ -1,0 +1,23 @@
+<!-- Affichage le cas échéant des messages de confirmation --> 
+<?php include VIEWS_DIR . '/inc/flash_messages.phtml'; ?>
+
+<!-- On parcours le tableau $posts qui contient l'ensemble des articles -->
+<?php foreach($posts as $post): ?>
+
+    <!-- Pour chaque article... -->
+    <article>
+        <h3><?= htmlspecialchars($post['title']); ?></h3>
+        <small>Rédigé par <?= htmlspecialchars($post['firstname']); ?> <?= htmlspecialchars($post['lastname']); ?> 
+                le <time datetime="<?= htmlspecialchars($post['postCreatedAt']);?>"><?= date('d/m/Y',strtotime(htmlspecialchars($post['postCreatedAt']))); ?></time>
+        </small>
+        <figure>
+            <img src="<?=asset('img/post/' . htmlspecialchars($post['image']))?>" alt="texte alternatif">
+            <figcaption>La légende de l'image ! </figcaption>
+        </figure>
+        <div><?= htmlspecialchars(mb_substr($post['content'], 0, 150, 'UTF-8')); ?></div>
+
+        <!-- Pour gérer l'UTF-8, utiliser les fonctions de l'extension mbstring : https://www.php.net/manual/fr/ref.mbstring.php -->
+        <a href="<?= buildUrl('/post', ['postid' => intval($post['postid'])]);?>">Lire la suite</a>
+    </article>
+
+<?php endforeach; ?>

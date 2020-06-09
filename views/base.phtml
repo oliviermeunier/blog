@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <base href="<?= BASE_URL; ?>">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mon blog</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="<?=asset('css/style.css')?>">
+</head>
+
+<body>
+    <header>
+        <h1>Bienvenue sur mon blog</h1>
+        <nav>
+            <?php if (isAuthenticated()) : ?>
+                <a href="<?= buildUrl('/admin/logout'); ?>">Déconnexion</a>
+            <?php else : ?>
+                <a href="<?= buildUrl('/admin/login'); ?>">Connexion</a>
+            <?php endif; ?>
+        </nav>
+    </header>
+    <main>
+        <?php include VIEWS_DIR . '/' . $view . '.phtml'; ?>
+    </main>
+    <footer>Mon footer</footer>
+</body>
+
+</html>

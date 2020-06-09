@@ -1,0 +1,53 @@
+<h2>Les derniers articles publiés</h2>
+
+<!-- Affichage le cas échéant des messages de confirmation --> 
+<?php include VIEWS_DIR . '/inc/flash_messages.phtml'; ?>
+
+<article>
+    <h3><?= htmlspecialchars($post['title']); ?></h3>
+    <small>Rédigé par <?= htmlspecialchars($post['firstname']); ?> <?= htmlspecialchars($post['lastname']); ?> 
+            le <time datetime="<?= htmlspecialchars($post['postCreatedAt']);?>"><?= date('d/m/Y',strtotime(htmlspecialchars($post['postCreatedAt']))); ?></time>
+    </small>
+    <?php if ($post['postUpdatedAt']): ?>
+        <p>Dernière mise à jour le <time datetime="<?= htmlspecialchars($post['postUpdatedAt']);?>"><?= date('d/m/Y',strtotime(htmlspecialchars($post['postUpdatedAt']))); ?></time></p>
+    <?php endif; ?>
+    <figure>
+        <img src="img/post/<?= htmlspecialchars($post['image']);?>" alt="texte alternatif">
+        <figcaption>La légende de l'image ! </figcaption>
+    </figure>
+    <div><?= htmlspecialchars($post['content']); ?></div>
+</article>
+<section>
+    <h3>Commentaires</h3>
+
+    <!-- Formulaire d'ajout de commentaire -->
+    <form action="<?=buildUrl('/comment/new');?>" method="POST">
+        <input type="hidden" name="postid" value="<?= $post['postid']; ?>">
+        <fieldset>
+            <legend>Ajouter un commentaire</legend>
+            <div>
+                <label for="nickname">Pseudo :</label>
+                <input type="text" id="nickname" name="nickname">
+            </div>
+            <div>
+                <label for="content">Commentaire :</label>
+                <textarea name="content" id="content"></textarea>
+            </div>
+            <input type="submit" value="Valider">
+        </fieldset>
+    </form>
+
+    <!-- Affichage des commentaires -->
+    <?php if(count($comments)): ?>
+        <ul>
+            <?php foreach($comments as $comment): ?>
+                <li>
+                    <h4><?= htmlspecialchars($comment['nickname']); ?></h4>
+                    <small><?= date('d/m/Y',strtotime(htmlspecialchars($comment['createdAt']))); ?></small>
+                    <p><?= htmlspecialchars($comment['content']); ?></p>
+                </li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</section>
+    

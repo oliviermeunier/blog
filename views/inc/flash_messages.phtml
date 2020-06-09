@@ -1,0 +1,9 @@
+<aside>
+    <?php if(isset($successMessages) && !empty($successMessages)): ?>
+        <ul>
+            <?php foreach($successMessages as $message): ?>
+                <li><?= htmlspecialchars($message); ?></li>
+            <?php endforeach; ?>
+        </ul>
+    <?php endif; ?>
+</aside>

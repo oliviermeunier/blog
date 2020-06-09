@@ -1,0 +1,40 @@
+<header>
+    <h2>Administration</h2>
+</header>
+<section>
+    <!-- On mettra ici un tableau avec la liste des articles --> 
+    <nav>
+        <a href="<?=buildUrl('/admin/post/new');?>" title="Rédiger un article">
+            <i class="fas fa-plus-square"></i>Rédiger un article
+        </a>
+    </nav>
+    
+    <!-- Affichage le cas échéant des messages de confirmation --> 
+    <?php include VIEWS_DIR . '/inc/flash_messages.phtml'; ?>
+
+    <table>
+        <thead>
+            <th scope="col">Date de création</th>
+            <th scope="col">Titre</th>
+            <th scope="col">Catégorie</th>
+            <th scope="col">Actions</th>
+        </thead>
+        <tbody>
+            <?php foreach($posts as $post): ?>
+                <tr>
+                    <td><?=htmlspecialchars(formatDate($post['postCreatedAt']));?></td>
+                    <td><?=htmlspecialchars($post['title']);?></td>
+                    <td><?=htmlspecialchars($post['category']);?></td>
+                    <td>
+                        <a href="<?=buildUrl('/admin/post/edit', ['postid' => $post['postid']]);?>" title="Modifier l'article">
+                            <i class="fas fa-pen-square"></i>
+                        </a>
+                        <a href="<?=buildUrl('/admin/post/delete', ['postid' => $post['postid']]);?>" title="Supprimer l'article">
+                            <i class="fas fa-trash-alt"></i>
+                        </a>
+                    </td>
+                </tr>
+            <?php endforeach; ?>
+        </tbody>
+    </table>
+</section>

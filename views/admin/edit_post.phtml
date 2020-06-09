@@ -1,0 +1,32 @@
+<header>
+    <h2>Rédiger un nouvel article</h2>
+</header>
+<section>
+    <form action="<?=buildUrl('/admin/post/edit', ['postid' => $post['postid']]);?>" method="post">
+        <fieldset>
+            <div>
+                <label for="title">Titre</label>
+                <input type="text" id="title" name="title" value="<?=$post['title'];?>">
+            </div>
+            <div>
+                <label for="category">Catégorie</label>
+                <select name="category">
+                    <?php foreach($categories as $category): ?>
+                        <?php $selected = $category['id'] === $post['categoryId'] ? 'selected' : ''; ?>
+                        <option value="<?=$category['id'];?>" <?=$selected;?>><?=$category['name'];?></option>
+                    <?php endforeach; ?>
+                </select>
+            </div>
+            <div>
+                <label for="image">Image</label>
+                <input type="text" id="image" name="image" value="<?=$post['image'];?>">
+            </div>
+            <div>
+                <label for="content">Contenu</label>
+                <textarea id="content" name="content"><?=$post['content'];?></textarea>
+            </div>
+        </fieldset>
+        <input type="submit" value="Enregistrer">
+    </form>
+
+</section>

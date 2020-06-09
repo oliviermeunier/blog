@@ -1,0 +1,18 @@
+<!-- Code HTML du formulaire de connexion administrateur -->
+<form action="<?=buildUrl('/admin/login');?>" method="post">
+    <?php if (isset($error)): ?>
+        <p class="error"><?=$error;?></p>
+    <?php endif; ?>
+    <fieldset>
+        <legend>Connexion</legend>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" value="<?= isset($email) ? $email : ''; ?>">
+        </div>
+        <div>
+            <label for="password">Mot de passe</label>
+            <input type="password" name="password" id="password">
+        </div>
+    </fieldset>
+    <input type="submit" value="Connexion">
+</form>
