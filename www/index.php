@@ -67,6 +67,11 @@ switch ($route) {
     case '/contact':
         require CONTROLLERS_DIR . '/contact.php';  
         break;
+
+    // Traitement des données du formulaire de contact
+    case '/ajax/contact':
+        require CONTROLLERS_DIR . '/ajax/contact.php';  
+        break;
 }
 
 
