@@ -2,7 +2,10 @@
     <h2>Rédiger un nouvel article</h2>
 </header>
 <section>
-    <form action="<?=buildUrl('/admin/post/new');?>" method="post">
+    <form action="<?=buildUrl('/admin/post/new');?>" method="post" enctype="multipart/form-data">
+        <?php if (isset($error)): ?>
+            <p class="error"><?=$error;?></p>
+        <?php endif; ?>
         <fieldset>
             <div>
                 <label for="title">Titre</label>
@@ -18,7 +21,7 @@
             </div>
             <div>
                 <label for="image">Image</label>
-                <input type="text" id="image" name="image">
+                <input type="file" id="image" name="image">
             </div>
             <div>
                 <label for="content">Contenu</label>
