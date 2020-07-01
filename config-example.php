@@ -9,8 +9,8 @@ define('BDD_PASSWORD', '');
 // Configuration du serveur SMTP (envoi de mails)
 define('SMTP_HOST', '');
 define('SMTP_PORT', 2525);
-define('SMTP_USERNAME', '30bfd753cf4684');
-define('SMTP_PASSWORD', '2b35e51f0dd89d');
+define('SMTP_USERNAME', 'regeherhtrthj');
+define('SMTP_PASSWORD', 'ykjyrukryjyuj');
 define('EMAIL_CONTACT_FROM', 'no-reply@blog.loc');
 define('EMAIL_CONTACT_TO', 'contact@blog.log');
 
@@ -29,6 +29,11 @@ if ($_SERVER['HTTP_HOST'] === 'localhost'
  || $_SERVER['HTTP_HOST'] === '127.0.0.1' 
  || $_SERVER['HTTP_HOST'] === NGROK_URL) 
 {
+    define('BASE_URL', '/path/to/your/blog/www');
+}
+
+else if('some-other-host') {
+    
     define('BASE_URL', '/path/to/your/blog/www');
 }
 
