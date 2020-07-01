@@ -27,17 +27,23 @@ class Database {
         ///////////////////////////////////////////////////////
         // Créer une connexion à la base de données avec PDO
         // PDO est une classe PHP qu'on va instancier (créer un objet PDO)
-        $pdo = new \PDO(
-            $dsn, // (string) DSN (Data Source Name)
-            BDD_USER, // Utilisateur
-            BDD_PASSWORD, // Mot de passe
-            [
-                \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
-                \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
-            ]
-        );
+        try {
+            $pdo = new \PDO(
+                $dsn, // (string) DSN (Data Source Name)
+                BDD_USER, // Utilisateur
+                BDD_PASSWORD, // Mot de passe
+                [
+                    \PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION,
+                    \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_ASSOC
+                ]
+            );
 
-        return $pdo;
+            return $pdo;
+        }
+        catch(\Exception $exception) {
+            var_dump($exception->getMessage());
+        }
+
     }
 
 
