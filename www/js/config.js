@@ -10,4 +10,8 @@ switch (url.host) {
     case '87rgr87r8th.ngrok.io':
         config.baseUrl += '/web-developer/greta-live-share/blog/www';
         break;
+
+    case 'mon-domaine.com':
+        config.baseUrl += '/chemin/vers/votre/blog/www';
+        break;
 }
