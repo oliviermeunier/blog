@@ -24,20 +24,18 @@ define('CORE_DIR', ROOT_DIR . '/src/Core');
 
 define('NGROK_URL', 'tyjtyjyktkyu.ngrok.io');
 
-// Si on passe par le localhost, il faut ajouter tout le chemin dans les URLs
-if ($_SERVER['HTTP_HOST'] === 'localhost' 
- || $_SERVER['HTTP_HOST'] === '127.0.0.1' 
- || $_SERVER['HTTP_HOST'] === NGROK_URL) 
-{
-    define('BASE_URL', '/path/to/your/blog/www');
-}
+switch ($_SERVER['HTTP_HOST']) {
+    case 'localhost':
+    case '127.0.0.1':
+    case NGROK_URL:
+        define('BASE_URL', '/path/to/your/blog/www');
+        break;
 
-else if('some-other-host') {
-    
-    define('BASE_URL', '/path/to/your/blog/www');
-}
+    case 'domain.com':
+    case 'www.domain.com':
+        define('BASE_URL', '/path/to/your/online/blog/www');
+        break;
 
-// Si on est sur le virtual host on ne doit pas mettre le chemin
-else {
-    define('BASE_URL', '');
+    default:
+        define('BASE_URL', '');
 }
